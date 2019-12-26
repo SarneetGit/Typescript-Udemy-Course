@@ -1,16 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Sorter = /** @class */ (function () {
-    function Sorter(collection) {
-        this.collection = collection;
+    function Sorter() {
     }
     Sorter.prototype.sort = function () {
-        var length = this.collection.length;
+        var length = this.length;
         for (var i = 0; i < length; i++) {
             for (var j = 0; j < length - i - 1; j++) {
-                var z = this.collection;
-                if (this.collection.compare(j)) {
-                    this.collection.swap(j);
+                if (this.compare(j)) {
+                    this.swap(j);
                 }
             }
         }

@@ -14,28 +14,31 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Sorter_1 = require("./Sorter");
-var NumbersCollection = /** @class */ (function (_super) {
-    __extends(NumbersCollection, _super);
-    function NumbersCollection(data) {
+var CharactersCollection = /** @class */ (function (_super) {
+    __extends(CharactersCollection, _super);
+    function CharactersCollection(data) {
         var _this = _super.call(this) || this;
         _this.data = data;
         return _this;
     }
-    Object.defineProperty(NumbersCollection.prototype, "length", {
+    Object.defineProperty(CharactersCollection.prototype, "length", {
         get: function () {
             return this.data.length;
         },
         enumerable: true,
         configurable: true
     });
-    NumbersCollection.prototype.compare = function (leftIndex) {
-        return this.data[leftIndex] > this.data[leftIndex + 1];
+    CharactersCollection.prototype.compare = function (leftIndex) {
+        return (this.data[leftIndex].toLowerCase() >
+            this.data[leftIndex + 1].toLowerCase());
     };
-    NumbersCollection.prototype.swap = function (leftIndex) {
-        var leftHand = this.data[leftIndex];
-        this.data[leftIndex] = this.data[leftIndex + 1];
-        this.data[leftIndex + 1] = leftHand;
+    CharactersCollection.prototype.swap = function (leftIndex) {
+        var characters = this.data.split('');
+        var leftHand = characters[leftIndex];
+        characters[leftIndex] = characters[leftIndex + 1];
+        characters[leftIndex + 1] = leftHand;
+        this.data = characters.join('');
     };
-    return NumbersCollection;
+    return CharactersCollection;
 }(Sorter_1.Sorter));
-exports.NumbersCollection = NumbersCollection;
+exports.CharactersCollection = CharactersCollection;
